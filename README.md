@@ -1,4 +1,4 @@
-# Hybrid De-identification of Clinical Records with Local Language Models
+# De-identification of Brazilian Portuguese Clinical Records Using a Hybrid Pipeline with Local Language Models
 
 A de-identification system for Brazilian Portuguese clinical records that combines
 **statistical n-grams**, **regular expressions** and **inference by a local LLM served
