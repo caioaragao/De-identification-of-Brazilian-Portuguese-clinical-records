@@ -1,0 +1,22 @@
+create table public.p02_brkga_sessoes (
+  id bigint generated always as identity not null,
+  nome_identificador text not null,
+  hash text null,
+  modelo_llm text not null,
+  n_genes integer not null,
+  n_repeticoes integer not null,
+  indices_amostra text not null,
+  alfa_penalizacao real not null,
+  pop_size integer null,
+  max_geracoes integer null,
+  seed_brkga bigint null,
+  pe real null,
+  pm real null,
+  rhoe real null,
+  k_populacoes integer null,
+  created_at timestamp without time zone not null default now(),
+  llm_num_ctx integer null,
+  llm_num_predict integer null,
+  constraint p02_brkga_sessoes_pkey primary key (id),
+  constraint p02_brkga_sessoes_nome_identificador_key unique (nome_identificador)
+) TABLESPACE pg_default;

@@ -1,0 +1,12 @@
+# Dependências do Projeto
+pandas
+pandarallel
+ollama
+supabase
+tiktoken
+scikit-learn
+
+# Dependências de Desenvolvimento / Testes
+pytest
+pytest-cov
+ruff

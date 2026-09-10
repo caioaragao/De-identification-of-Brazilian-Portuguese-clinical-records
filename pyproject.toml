@@ -1,0 +1,45 @@
+[project]
+name = "anonimizacao-prontuarios"
+version = "1.0.0"
+description = "Sistema de Anonimização de Prontuários Médicos — Mestrado UFAL"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Caio Galvão Aragão", email = "cga@ic.ufal.br" }]
+
+[tool.pytest.ini_options]
+testpaths = ["src/tests"]
+pythonpath = ["src"]
+addopts = "-v --tb=short"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long (já controlado por line-length)
+    "E741",  # ambiguous variable names (projeto usa nomes em PT-BR)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["Anonimizacao", "ClienteOllama", "Supabase", "PipelineOrquestrador", "GeradorRelatorio", "detector_loop", "funcoes_gerais", "logger", "a01_platform", "anonymed"]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "src/tests/*",
+    "src/__pycache__/*",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true

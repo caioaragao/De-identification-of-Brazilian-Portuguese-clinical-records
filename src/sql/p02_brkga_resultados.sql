@@ -1,0 +1,32 @@
+create table public.p02_brkga_resultados (
+  id bigint generated always as identity not null,
+  sessao_brkga_id bigint not null,
+  cromossomo text null,
+  params_decodificados text null,
+  recall_medio real null,
+  precision_medio real null,
+  f1_medio real null,
+  desvio_padrao real null,
+  fitness real null,
+  created_at timestamp without time zone not null default now(),
+  temperature double precision null,
+  top_k integer null,
+  top_p double precision null,
+  repeat_penalty double precision null,
+  f2_medio double precision null,
+  contagem_falhas integer null default 0,
+  contagem_duvidas integer null default 0,
+  repeat_last_n integer null,
+  ultima_atualizacao timestamp without time zone null,
+  cache_hits integer not null default 0,
+  constraint p02_brkga_resultados_pkey primary key (id),
+  constraint p02_brkga_resultados_cache_unico unique (
+    sessao_brkga_id,
+    temperature,
+    top_k,
+    top_p,
+    repeat_penalty,
+    repeat_last_n
+  ),
+  constraint p02_brkga_resultados_sessao_brkga_id_fkey foreign KEY (sessao_brkga_id) references p02_brkga_sessoes (id) on update CASCADE on delete CASCADE
+) TABLESPACE pg_default;
